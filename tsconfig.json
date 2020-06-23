@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "sourceMap": true,
+    "target": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "baseUrl": "./",
+    "jsx": "react",
+    "paths": {
+      "*": ["typings/*", "node_modules/@types/*"]
+    },
+    "typeRoots": ["node_modules/@types/*"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "resolveJsonModule": true,
+    "declarationMap": true,
+    "incremental": true,
+    "skipLibCheck": true
+  }
+}
