@@ -43,7 +43,6 @@ export const HoverBumpBox: FC<Props> = ({
     <Container>
       <Transition in={!hovered} timeout={100} onExited={() => setLeaved(true)}>
         {(state) => {
-          console.log('bump', state);
           return (
             <DentBox
               additionalCss={{
@@ -66,7 +65,6 @@ export const HoverBumpBox: FC<Props> = ({
       </Transition>
       <Transition in={leaved} timeout={100} onExited={() => setHovered(false)}>
         {(state) => {
-          console.log('dent', state);
           return (
             <BumpBox
               additionalCss={{

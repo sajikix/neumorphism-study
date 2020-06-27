@@ -13,6 +13,18 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
   },
+  devServer: {
+    historyApiFallback: {
+      rewrites: [{
+        from: /^\/[a-z]*/,
+        to: '/index.html'
+      }],
+    },
+    contentBase: 'public',
+    port: 58080,
+    open: true,
+    inline: true,
+  },
   module: {
     rules: [{
         test: /\.(mp4|png|jpg|gif)$/,

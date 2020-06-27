@@ -16,11 +16,19 @@ const Container = styled.div`
 
 interface Props {}
 
-export const Atoms: FC<Props> = () => {
+export const Molecules: FC<Props> = () => {
   return (
     <Container>
-      <BumpBox />
-      <DentBox />
+      <HoverDentBox
+        dentShadowColor={'#22664f'}
+        dentHighlightColor={'#79e8c3'}
+        dentBackgroudColor={'#39ac86'}
+      />
+      <HoverBumpBox
+        dentShadowColor={'#22664f'}
+        dentHighlightColor={'#79e8c3'}
+        dentBackgroudColor={'#39ac86'}
+      />
     </Container>
   );
 };

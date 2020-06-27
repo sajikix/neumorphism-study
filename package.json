@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build-webpack": "webpack -p --progress --config webpack.config.js",
-    "build-webpack-watch": "webpack --progress --watch",
-    "type-check": "../../node_modules/.bin/tsc --noEmit"
+    "type-check": "../../node_modules/.bin/tsc --noEmit",
+    "start": "NODE_ENV=development webpack-dev-server -d"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -17,6 +17,7 @@
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@types/react": "^16.9.38",
     "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
     "@types/react-transition-group": "^4.4.0",
     "babel-loader": "^8.1.0",
     "prettier": "^2.0.5",
@@ -24,7 +25,8 @@
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -32,6 +34,7 @@
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-transition-group": "^4.4.1"
   }
 }
