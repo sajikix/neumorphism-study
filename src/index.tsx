@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Profile } from './pages';
+import { Profile, Atoms } from './pages';
 
 const Root = () => {
-  return <Profile />;
+  return <Atoms />;
 };
 
 render(<Root />, document.getElementById('root'));
