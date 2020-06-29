@@ -1,7 +1,12 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { BumpBox, DentBox } from '../atoms';
-import { HoverDentBox, HoverBumpBox } from '../molecules';
+import {
+  HoverDentBox,
+  HoverBumpBox,
+  HoverBumpToDentBox,
+  HoverDentToBumpBox,
+  Button,
+} from '../molecules';
 
 const Container = styled.div`
   background-color: #eef0f4;
@@ -19,16 +24,11 @@ interface Props {}
 export const Molecules: FC<Props> = () => {
   return (
     <Container>
-      <HoverDentBox
-        dentShadowColor={'#22664f'}
-        dentHighlightColor={'#79e8c3'}
-        dentBackgroudColor={'#39ac86'}
-      />
-      <HoverBumpBox
-        dentShadowColor={'#22664f'}
-        dentHighlightColor={'#79e8c3'}
-        dentBackgroudColor={'#39ac86'}
-      />
+      <HoverDentBox />
+      <HoverBumpBox />
+      <HoverBumpToDentBox />
+      <HoverDentToBumpBox />
+      <Button />
     </Container>
   );
 };

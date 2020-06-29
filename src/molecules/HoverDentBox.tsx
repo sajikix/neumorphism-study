@@ -1,14 +1,17 @@
-import React, { useState, FC, ReactElement } from 'react';
-import * as emotion from '@emotion/core';
+import React, { useState, FC } from 'react';
 import { Transition } from 'react-transition-group';
-import { TransitionStatus } from 'react-transition-group/Transition';
 import styled from '@emotion/styled';
-import { BumpBox, DentBox } from '../atoms';
+import { DentBox } from '../atoms';
+
+interface ContainerProps {
+  width: string;
+  height: string;
+}
 
 const Container = styled.div`
   /* form */
-  height: 40vh;
-  width: 40vh;
+  height: ${({ width }: ContainerProps) => width};
+  width: ${({ height }: ContainerProps) => height};
   /* flex */
   display: flex;
   flex-direction: column;
@@ -17,53 +20,39 @@ const Container = styled.div`
 `;
 
 interface Props {
+  width?: string;
+  height?: string;
+  borderRadius?: string;
   dentBackgroudColor?: string;
   dentShadowColor?: string;
   dentHighlightColor?: string;
-  bumpBackgroudColor?: string;
-  bumpShadowColor?: string;
-  bumpHighlightColor?: string;
-  dentBoxChildren?: ReactElement;
-  bumpBoxChildren?: ReactElement;
+  dentRounded?: boolean;
+  dentDepth?: number;
 }
 
 export const HoverDentBox: FC<Props> = ({
+  width = '40vh',
+  height = '40vh',
   dentBackgroudColor,
   dentShadowColor,
   dentHighlightColor,
-  bumpBackgroudColor,
-  bumpShadowColor,
-  bumpHighlightColor,
-  bumpBoxChildren,
-  dentBoxChildren,
+  dentRounded,
+  dentDepth,
+  children,
 }) => {
   const [hovered, setHovered] = useState(false);
-  const [leaved, setLeaved] = useState(false);
   return (
-    <Container>
-      <Transition in={!hovered} timeout={100} onExited={() => setLeaved(true)}>
-        {(state) => {
-          return (
-            <BumpBox
-              additionalCss={{
-                position: 'absolute',
-                transition: '0.5s',
-                opacity: state === 'entered' ? 1 : 0,
-                zIndex: state === 'entered' ? 2 : 1,
-              }}
-              onMouseOver={() => {
-                setHovered(true);
-              }}
-              backgroudColor={bumpBackgroudColor}
-              shadowColor={bumpShadowColor}
-              highlightColor={bumpHighlightColor}
-            >
-              {bumpBoxChildren}
-            </BumpBox>
-          );
-        }}
-      </Transition>
-      <Transition in={leaved} timeout={100} onExited={() => setHovered(false)}>
+    <Container
+      width={width}
+      height={height}
+      onMouseOver={() => {
+        setHovered(true);
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+      }}
+    >
+      <Transition in={hovered} timeout={100}>
         {(state) => {
           return (
             <DentBox
@@ -73,14 +62,15 @@ export const HoverDentBox: FC<Props> = ({
                 opacity: state === 'entered' ? 1 : 0,
                 zIndex: state === 'entered' ? 2 : 1,
               }}
-              onMouseLeave={() => {
-                setLeaved(false);
-              }}
               backgroudColor={dentBackgroudColor}
               shadowColor={dentShadowColor}
               highlightColor={dentHighlightColor}
+              rounded={dentRounded}
+              depth={dentDepth}
+              width={width}
+              height={height}
             >
-              {dentBoxChildren}
+              {children}
             </DentBox>
           );
         }}

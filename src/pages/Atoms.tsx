@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { BumpBox, DentBox } from '../atoms';
-import { HoverDentBox, HoverBumpBox } from '../molecules';
 
 const Container = styled.div`
   background-color: #eef0f4;
@@ -20,7 +19,9 @@ export const Atoms: FC<Props> = () => {
   return (
     <Container>
       <BumpBox />
+      <BumpBox rounded />
       <DentBox />
+      <DentBox rounded />
     </Container>
   );
 };

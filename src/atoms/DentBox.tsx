@@ -2,30 +2,28 @@ import React, { FC } from 'react';
 import { TransitionStatus } from 'react-transition-group/Transition';
 import styled from '@emotion/styled';
 import { InterpolationWithTheme } from '@emotion/core';
+import { getBoxShadow } from '../util';
 
 interface BoxProps {
-  borderRadius?: string;
-  backgroudColor?: string;
-  shadowColor?: string;
-  highlightColor?: string;
+  borderRadius: string;
+  backgroudColor: string;
+  shadowColor: string;
+  highlightColor: string;
+  width: string;
+  height: string;
+  rounded: boolean;
+  depth: number;
 }
 
 // TODO: 背景色やsizeとか高さでshadowを調整できるようにしたい
 const Box = styled.div`
   /* form */
-  height: 40vh;
-  width: 40vh;
-  border-radius: ${({ borderRadius }: BoxProps) => borderRadius || '10%'};
+  height: ${({ width }: BoxProps) => width};
+  width: ${({ height }: BoxProps) => height};
+  border-radius: ${({ borderRadius }: BoxProps) => borderRadius};
   /* color */
-  background-color: ${({ backgroudColor }: BoxProps) =>
-    backgroudColor || '#eef0f4'};
-  box-shadow: ${({ shadowColor, highlightColor }: BoxProps) =>
-    shadowColor && highlightColor
-      ? 'inset 8px 8px 16px ' +
-        shadowColor +
-        ', inset -8px -8px 16px' +
-        highlightColor
-      : 'inset 8px 8px 16px #d9dade, inset -8px -8px 16px #ffffff'};
+  background-color: ${({ backgroudColor }: BoxProps) => backgroudColor};
+  box-shadow: ${(props: BoxProps) => getBoxShadow(props, false)};
   /* flex */
   display: flex;
   flex-direction: column;
@@ -39,19 +37,23 @@ interface Props {
   shadowColor?: string;
   highlightColor?: string;
   additionalCss?: InterpolationWithTheme<any>;
-  onMouseOver?: () => void;
-  onMouseLeave?: () => void;
+  width?: string;
+  height?: string;
+  rounded?: boolean;
+  depth?: number;
 }
 
 export const DentBox: FC<Props> = ({
+  backgroudColor = '#eef0f4',
+  shadowColor = '#d9dade',
+  highlightColor = '#ffffff',
+  borderRadius = '10%',
+  width = '40vh',
+  height = '40vh',
+  rounded = false,
+  depth = 8,
   children,
-  backgroudColor,
-  shadowColor,
-  highlightColor,
-  borderRadius,
   additionalCss,
-  onMouseOver,
-  onMouseLeave,
 }) => {
   return (
     <Box
@@ -60,8 +62,10 @@ export const DentBox: FC<Props> = ({
       highlightColor={highlightColor}
       borderRadius={borderRadius}
       css={additionalCss}
-      onMouseOver={onMouseOver}
-      onMouseLeave={onMouseLeave}
+      width={width}
+      height={height}
+      rounded={rounded}
+      depth={depth}
     >
       {children}
     </Box>
