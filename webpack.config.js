@@ -8,7 +8,7 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "docs"),
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -20,7 +20,7 @@ module.exports = {
         to: '/index.html'
       }],
     },
-    contentBase: 'public',
+    contentBase: './docs',
     port: 58080,
     open: true,
     inline: true,

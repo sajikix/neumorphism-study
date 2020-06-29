@@ -6,7 +6,7 @@
   "author": "saji-ryu <rsajiki@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build-webpack": "webpack -p --progress --config webpack.config.js",
+    "build": "webpack -p --progress --config webpack.config.js",
     "type-check": "../../node_modules/.bin/tsc --noEmit",
     "start": "NODE_ENV=development webpack-dev-server -d"
   },
